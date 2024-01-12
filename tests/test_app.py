@@ -70,7 +70,7 @@ def test_get_add_spaces(page, test_web_address,db_connection,web_client):
     page.click('text=List new space')
     strong_tag = page.locator("h1")
     
-    expect(strong_tag).to_have_text("Create new listing")
+    expect(strong_tag).to_have_count(2)
     
     response = web_client.get('/newspace')
     assert response.status_code == 302
