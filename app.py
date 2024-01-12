@@ -164,7 +164,6 @@ def get_dashboard():
         if session['email']:
             user_spaces = space_repository.get_by_user(session["user_id"])
             user_requests = dash_repository.list_req(session["user_id"])
-            print('assigns variables')
             user_approvals = dash_repository.list_approvals(session["user_id"]) 
             if request.method == 'POST':
                 
@@ -177,9 +176,6 @@ def get_dashboard():
                 if request.form['approve_or_decline'] == "decline":
                     dash_repository.decline(req_id, space_id, date_req)
                     return redirect('/dashboard')
-            print('user_spaces = ', user_spaces)
-            print('user_requests = ', user_requests)
-            print('user_approvals = ', user_approvals)
             return render_template('/dashboard.html', spaces = user_spaces, requests = user_requests, approvals = user_approvals, username = session['email']) 
         
     except:
