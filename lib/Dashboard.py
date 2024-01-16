@@ -7,5 +7,5 @@ class Requests:
     space_id: int
     date_req: date
     stat: str
-    title: str
+    title: str 
     price: float
